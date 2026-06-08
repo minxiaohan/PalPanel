@@ -1,0 +1,95 @@
+[
+  {
+    "time": "2026-06-08 17:47:14",
+    "uptimeSeconds": 786917,
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "totalMemMb": 29619,
+    "freeMemMb": 15896,
+    "panelMemMb": 55,
+    "saveSizeMb": 0.75,
+    "worlds": [
+      {
+        "id": "70B77992934409F4F933276E747B6ECD",
+        "name": "玉兰世界",
+        "sizeMb": 0.53
+      },
+      {
+        "id": "830169DB4A39D5EF7CE4E2A1B8EEC91E",
+        "name": "单人图",
+        "sizeMb": 0.22
+      }
+    ],
+    "disks": [
+      {
+        "path": "D:\\",
+        "available": ""
+      }
+    ]
+  },
+  {
+    "time": "2026-06-08 17:47:30",
+    "uptimeSeconds": 786933,
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "totalMemMb": 29619,
+    "freeMemMb": 15903,
+    "panelMemMb": 54,
+    "saveSizeMb": 0.75,
+    "worlds": [
+      {
+        "id": "70B77992934409F4F933276E747B6ECD",
+        "name": "玉兰世界",
+        "sizeMb": 0.53
+      },
+      {
+        "id": "830169DB4A39D5EF7CE4E2A1B8EEC91E",
+        "name": "单人图",
+        "sizeMb": 0.22
+      }
+    ],
+    "disks": [
+      {
+        "path": "D:\\",
+        "available": ""
+      }
+    ]
+  },
+  {
+    "time": "2026-06-08 17:49:41",
+    "uptimeSeconds": 787064,
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "totalMemMb": 29619,
+    "freeMemMb": 15429,
+    "panelMemMb": 56,
+    "saveSizeMb": 0.75,
+    "worlds": [
+      {
+        "id": "70B77992934409F4F933276E747B6ECD",
+        "name": "玉兰世界",
+        "sizeMb": 0.53
+      },
+      {
+        "id": "830169DB4A39D5EF7CE4E2A1B8EEC91E",
+        "name": "单人图",
+        "sizeMb": 0.22
+      }
+    ],
+    "disks": [
+      {
+        "path": "D:\\",
+        "available": ""
+      }
+    ]
+  }
+]

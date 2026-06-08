@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Palworld 服务器面板</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="mark">P</div>
+        <div>
+          <strong>PalPanel</strong>
+          <span>本机控制台</span>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-tab="overview">概览</button>
+        <button class="nav-item" data-tab="players">玩家</button>
+        <button class="nav-item" data-tab="records">记录</button>
+        <button class="nav-item" data-tab="admin">管理</button>
+        <button class="nav-item" data-tab="worlds">地图</button>
+        <button class="nav-item" data-tab="settings">配置</button>
+        <button class="nav-item" data-tab="backups">备份</button>
+        <button class="nav-item" data-tab="audit">操作记录</button>
+        <button class="nav-item" data-tab="logs">日志</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>幻兽帕鲁服务器</h1>
+          <div class="connect-line">
+            <span>联机地址：</span>
+            <code id="publicConnectAddress">3t80x98154.vicp.fun:8211</code>
+            <button class="secondary small" id="copyConnectBtn">复制</button>
+          </div>
+          <p id="serverAddress">本机地址读取中...</p>
+        </div>
+        <div class="top-actions">
+          <button class="secondary small" id="changePasswordBtn">修改密码</button>
+          <button class="secondary small" id="logoutBtn">退出登录</button>
+          <button class="icon-btn" id="refreshBtn" title="刷新">刷</button>
+          <span class="status-pill" id="statusPill">检查中</span>
+        </div>
+      </header>
+
+      <section class="tab-view active" id="tab-overview">
+        <section class="panel password-panel" id="passwordPanel">
+          <div class="panel-title">
+            <h2>修改面板密码</h2>
+            <button class="secondary small" id="closePasswordPanelBtn">关闭</button>
+          </div>
+          <div class="form-grid">
+            <label>旧密码<input id="oldPanelPassword" type="password"></label>
+            <label>新密码<input id="newPanelPassword" type="password"></label>
+          </div>
+          <button class="primary small" id="savePanelPasswordBtn">保存新密码</button>
+        </section>
+        <div class="ops-grid">
+          <section class="panel control-panel">
+            <div class="panel-title">
+              <h2>电源控制</h2>
+              <span id="lastUpdate">--</span>
+            </div>
+            <div class="power-actions">
+              <button class="primary" data-action="start">启动</button>
+              <button class="warning" data-action="restart">重启</button>
+              <button class="danger" data-action="stop">停止</button>
+            </div>
+            <div class="hint" id="operationMessage">等待操作</div>
+          </section>
+          <section class="metric"><span>运行状态</span><strong id="metricState">--</strong></section>
+          <section class="metric"><span>在线人数</span><strong id="metricOnline">--</strong></section>
+          <section class="metric"><span>人数上限</span><strong id="metricPlayers">--</strong></section>
+          <section class="metric"><span>内存占用</span><strong id="metricMemory">--</strong></section>
+        </div>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>在线玩家</h2>
+            <button class="secondary small" id="refreshPlayersBtn">刷新</button>
+          </div>
+          <div class="hint player-hint" id="playerHint">读取中...</div>
+          <div class="table" id="playerTable"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>进程</h2>
+            <span>PalServer / Shipping</span>
+          </div>
+          <div class="table" id="processTable"></div>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-players">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>在线玩家</h2>
+            <div class="panel-actions">
+              <button class="secondary small" id="setupRestBtn">启用 REST API</button>
+              <button class="primary small" id="refreshPlayersBtn2">刷新</button>
+            </div>
+          </div>
+          <div class="hint player-hint" id="playerHint2">读取中...</div>
+          <div class="table" id="playerTable2"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-title">
+            <h2>玩家在线时长</h2>
+            <button class="primary small" id="refreshPlayerStatsBtn">刷新统计</button>
+          </div>
+          <p class="hint">统计从面板开始记录玩家加入/离开事件后计算；正在在线的玩家会累计到当前时间。</p>
+          <div class="table" id="playerStatsTable"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-title">
+            <h2>历史上下线与单次时长</h2>
+            <span id="selectedPlayerStats">选择玩家查看明细</span>
+          </div>
+          <div class="table" id="playerSessionTable"></div>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-records">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>玩家记录</h2>
+            <button class="primary small" id="refreshRecordsBtn">刷新</button>
+          </div>
+          <div class="record-filters">
+            <label>类型
+              <select id="recordType">
+                <option value="all">全部</option>
+                <option value="join">加入服务器</option>
+                <option value="leave">离开服务器</option>
+                <option value="chat">聊天</option>
+              </select>
+            </label>
+            <label>玩家筛选<input id="recordPlayer" type="text" placeholder="玩家名或玩家 ID"></label>
+          </div>
+          <p class="hint">加入和离开记录由面板轮询在线玩家生成。聊天记录需要服务端日志输出聊天行。</p>
+          <div class="table" id="recordTable"></div>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-admin">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>RCON 管理命令</h2>
+            <div class="panel-actions">
+              <button class="secondary small" id="setupRconBtn">启用 RCON</button>
+              <button class="primary small" id="rconShowPlayersBtn">查看玩家</button>
+              <button class="primary small" id="adminSaveBtn">保存世界</button>
+            </div>
+          </div>
+          <p class="hint" id="rconStatus">读取 RCON 状态...</p>
+          <div class="admin-grid">
+            <section class="admin-box">
+              <h3>广播公告</h3>
+              <input id="broadcastMessage" type="text" placeholder="输入要广播给全服的消息">
+              <button class="primary small" id="broadcastBtn">发送广播</button>
+            </section>
+            <section class="admin-box">
+              <h3>踢出玩家</h3>
+              <input id="kickTarget" type="text" placeholder="填写在线玩家表里的 UserID">
+              <button class="warning small" id="kickBtn">踢出</button>
+            </section>
+            <section class="admin-box">
+              <h3>封禁玩家</h3>
+              <input id="banTarget" type="text" placeholder="填写在线玩家表里的 UserID">
+              <button class="danger small" id="banBtn">封禁</button>
+            </section>
+            <section class="admin-box">
+              <h3>自定义命令</h3>
+              <input id="customRconCommand" type="text" placeholder="例如：Info">
+              <button class="secondary small" id="customRconBtn">执行</button>
+            </section>
+          </div>
+          <pre class="rcon-output" id="rconOutput">广播、保存、踢人、封禁会优先使用 REST API，中文公告不会乱码。自定义命令仍使用 RCON。</pre>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-worlds">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>地图 / 存档管理</h2>
+            <button class="primary small" id="refreshWorldsBtn">刷新</button>
+          </div>
+          <div class="world-toolbar">
+            <label>新地图备注<input id="newWorldName" type="text" placeholder="例如：二周目 / 高倍率服"></label>
+            <button class="secondary small" id="createWorldBtn">创建并切换到新地图</button>
+          </div>
+          <p class="hint">创建或切换地图前必须先停止服务器。新地图会在下次启动服务器时生成 Level.sav。</p>
+          <div class="table" id="worldTable"></div>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-settings">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>常用配置</h2>
+            <button class="primary small" id="saveSettingsBtn">保存</button>
+          </div>
+          <div class="form-grid">
+            <label>服务器名<input id="ServerName" type="text"></label>
+            <label>服务器描述<input id="ServerDescription" type="text"></label>
+            <label>服务器密码<input id="ServerPassword" type="text"></label>
+            <label>管理员密码<input id="AdminPassword" type="text"></label>
+            <label>游戏端口<input id="PublicPort" type="number" min="1" max="65535"></label>
+            <label>人数上限<input id="ServerPlayerMaxNum" type="number" min="1" max="128"></label>
+            <label>REST API 端口<input id="RESTAPIPort" type="number" min="1" max="65535"></label>
+            <label>RCON 端口<input id="RCONPort" type="number" min="1" max="65535"></label>
+            <label>难度
+              <select id="Difficulty">
+                <option value="None">None / 默认</option>
+                <option value="Normal">Normal / 普通</option>
+                <option value="Difficult">Difficult / 困难</option>
+              </select>
+            </label>
+            <label>死亡惩罚
+              <select id="DeathPenalty">
+                <option value="None">None / 不掉落</option>
+                <option value="Item">Item / 只掉落物品</option>
+                <option value="ItemAndEquipment">ItemAndEquipment / 掉落物品和装备</option>
+                <option value="All">All / 全部掉落</option>
+              </select>
+            </label>
+            <label>经验倍率<input id="ExpRate" type="number" min="0.1" step="0.1"></label>
+            <label>捕获倍率<input id="PalCaptureRate" type="number" min="0.1" step="0.1"></label>
+            <label>掉落倍率<input id="CollectionDropRate" type="number" min="0.1" step="0.1"></label>
+            <label>孵蛋时间<input id="PalEggDefaultHatchingTime" type="number" min="0" step="0.5"></label>
+          </div>
+          <div class="toggles">
+            <label><input id="bIsPvP" type="checkbox"> PvP</label>
+            <label><input id="bEnableFriendlyFire" type="checkbox"> 友伤</label>
+            <label><input id="RCONEnabled" type="checkbox"> RCON</label>
+            <label><input id="RESTAPIEnabled" type="checkbox"> REST API</label>
+          </div>
+          <p class="hint">保存配置后需要重启服务器才会完整生效。</p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>配置项说明</h2>
+            <button class="primary small" id="saveTranslatedConfigBtn">保存全部配置项</button>
+          </div>
+          <p class="hint config-edit-hint">可以直接修改当前值。保存后需要重启服务器才会完整生效。</p>
+          <div class="table translated-config" id="translatedConfigTable"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>原始配置</h2>
+            <button class="secondary small" id="saveRawBtn">保存原文</button>
+          </div>
+          <textarea id="rawConfig" spellcheck="false"></textarea>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-backups">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>存档备份</h2>
+            <button class="primary small" id="backupBtn">立即备份</button>
+          </div>
+          <div class="table" id="backupTable"></div>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-audit">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>面板操作记录</h2>
+            <button class="primary small" id="refreshAuditBtn">刷新</button>
+          </div>
+          <div class="audit-filters">
+            <label>动作
+              <select id="auditAction">
+                <option value="all">全部</option>
+                <option value="登录成功">登录成功</option>
+                <option value="登录失败">登录失败</option>
+                <option value="退出登录">退出登录</option>
+                <option value="面板操作">面板操作</option>
+                <option value="修改配置">修改配置</option>
+                <option value="修改原始配置">修改原始配置</option>
+                <option value="切换地图">切换地图</option>
+              </select>
+            </label>
+            <label>结果
+              <select id="auditResult">
+                <option value="all">全部</option>
+                <option value="true">成功</option>
+                <option value="false">失败</option>
+              </select>
+            </label>
+            <label>关键词<input id="auditKeyword" type="text" placeholder="用户 / IP / 字段 / 路径"></label>
+          </div>
+          <p class="hint">记录登录成功/失败、退出登录和面板操作。计算机名称依赖反向 DNS，无法解析时会为空。</p>
+          <div class="table" id="auditTable"></div>
+        </section>
+      </section>
+
+      <section class="tab-view" id="tab-logs">
+        <section class="panel log-panel">
+          <div class="panel-title">
+            <h2>日志</h2>
+            <button class="secondary small" id="refreshLogsBtn">刷新日志</button>
+          </div>
+          <pre id="logs">读取中...</pre>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

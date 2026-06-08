@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PalPanel 登录</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="login-body">
+  <main class="login-shell">
+    <section class="login-panel">
+      <div class="brand login-brand">
+        <div class="mark">P</div>
+        <div>
+          <strong>PalPanel</strong>
+          <span>服务器管理登录</span>
+        </div>
+      </div>
+      <label>用户名<input id="username" type="text" value="admin" autocomplete="username"></label>
+      <label>密码<input id="password" type="password" autocomplete="current-password"></label>
+      <button class="primary" id="loginBtn">登录</button>
+      <p class="hint" id="loginMessage">请输入面板账号密码。</p>
+    </section>
+  </main>
+  <script src="/login.js"></script>
+</body>
+</html>

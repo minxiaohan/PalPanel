@@ -1,0 +1,98 @@
+﻿2026-06-08 09:38:33 panel started http://127.0.0.1:8088/
+2026-06-08 10:10:06 node panel started http://127.0.0.1:8088/
+2026-06-08 10:16:21 start server
+2026-06-08 10:16:28 stop server
+2026-06-08 10:16:31 start server
+2026-06-08 10:16:34 restart server
+2026-06-08 10:16:38 stop server
+2026-06-08 10:16:42 start server
+2026-06-08 10:20:54 stop server
+2026-06-08 10:20:57 start server
+2026-06-08 10:21:00 restart server
+2026-06-08 10:44:10 node panel started http://127.0.0.1:8088/
+2026-06-08 10:44:26 enable rest api for player list
+2026-06-08 10:44:40 stop server
+2026-06-08 10:44:43 start server
+2026-06-08 10:44:46 restart server
+2026-06-08 10:50:27 enable rest api for player list
+2026-06-08 10:50:28 enable rest api for player list
+2026-06-08 10:50:40 enable rest api for player list
+2026-06-08 11:02:35 start server
+2026-06-08 11:02:48 backup D:\game\steam\steamapps\common\PalServer\PalPanel\backups\pal-save-20260608-030247.zip
+2026-06-08 11:02:53 backup D:\game\steam\steamapps\common\PalServer\PalPanel\backups\pal-save-20260608-030252.zip
+2026-06-08 11:03:27 update settings
+2026-06-08 11:03:32 stop server
+2026-06-08 11:03:35 start server
+2026-06-08 11:03:37 restart server
+2026-06-08 11:17:41 node panel started http://127.0.0.1:8088/
+2026-06-08 11:37:49 node panel started http://127.0.0.1:8088/
+2026-06-08 11:39:07 stop server
+2026-06-08 11:39:12 create world 70B77992934409F4F933276E747B6ECD
+2026-06-08 11:39:17 switch world 830169DB4A39D5EF7CE4E2A1B8EEC91E
+2026-06-08 11:39:25 switch world 70B77992934409F4F933276E747B6ECD
+2026-06-08 11:39:29 start server
+2026-06-08 11:40:43 backup world 70B77992934409F4F933276E747B6ECD
+2026-06-08 11:48:40 stop server
+2026-06-08 11:48:43 start server
+2026-06-08 11:48:46 restart server
+2026-06-08 14:26:04 node panel started http://127.0.0.1:8088/
+2026-06-08 14:26:06 enable rcon
+2026-06-08 14:26:07 stop server
+2026-06-08 14:26:10 start server
+2026-06-08 14:26:12 restart server
+2026-06-08 14:47:22 node panel started http://127.0.0.1:8088/
+2026-06-08 14:47:25 rcon Info
+2026-06-08 14:47:26 rcon ShowPlayers
+2026-06-08 14:47:27 rcon Save
+2026-06-08 14:49:28 rcon Broadcast 玉兰湾
+2026-06-08 14:49:47 rcon Broadcast admin
+2026-06-08 15:00:37 rcon Broadcast admin
+2026-06-08 15:00:47 rcon Broadcast 你好
+2026-06-08 15:05:57 node panel started http://127.0.0.1:8088/
+2026-06-08 15:06:00 rest save
+2026-06-08 15:06:46 node panel started http://127.0.0.1:8088/
+2026-06-08 15:06:48 rest announce
+2026-06-08 15:07:10 rest announce
+2026-06-08 15:12:06 stop server
+2026-06-08 15:12:20 rename world 830169DB4A39D5EF7CE4E2A1B8EEC91E
+2026-06-08 15:12:22 switch world 830169DB4A39D5EF7CE4E2A1B8EEC91E
+2026-06-08 15:12:26 start server
+2026-06-08 15:13:13 stop server
+2026-06-08 15:13:17 switch world 70B77992934409F4F933276E747B6ECD
+2026-06-08 15:13:21 start server
+2026-06-08 15:18:11 node panel started http://127.0.0.1:8088/
+2026-06-08 15:18:45 save config for world 70B77992934409F4F933276E747B6ECD
+2026-06-08 15:47:12 node panel started http://127.0.0.1:8088/
+2026-06-08 15:50:43 enable rest api for player list
+2026-06-08 15:57:43 node panel started http://0.0.0.0:8210/
+2026-06-08 15:58:38 node panel started http://0.0.0.0:8210/
+2026-06-08 16:00:43 node panel started http://0.0.0.0:8210/
+2026-06-08 16:19:30 node panel started http://0.0.0.0:8210/
+2026-06-08 16:22:59 node panel started http://0.0.0.0:8210/
+2026-06-08 16:26:16 stop server
+2026-06-08 16:26:19 start server
+2026-06-08 16:26:22 restart server
+2026-06-08 16:26:54 update settings
+2026-06-08 16:26:59 stop server
+2026-06-08 16:27:02 start server
+2026-06-08 16:27:05 restart server
+2026-06-08 16:39:48 node panel started http://0.0.0.0:8210/
+2026-06-08 16:40:40 node panel started http://0.0.0.0:8210/
+2026-06-08 16:48:58 update settings
+2026-06-08 17:02:27 node panel started http://0.0.0.0:8210/
+2026-06-08 17:03:44 node panel started http://0.0.0.0:8210/
+2026-06-08 17:13:12 node panel started http://0.0.0.0:8210/
+2026-06-08 17:21:35 node panel started http://0.0.0.0:8210/
+2026-06-08 17:23:22 stop server
+2026-06-08 17:23:27 backup world 70B77992934409F4F933276E747B6ECD
+2026-06-08 17:23:28 restore world 70B77992934409F4F933276E747B6ECD from world-70B77992934409F4F933276E747B6ECD-20260608-034042.zip
+2026-06-08 17:24:12 rename world 70B77992934409F4F933276E747B6ECD
+2026-06-08 17:24:17 rename world 70B77992934409F4F933276E747B6ECD
+2026-06-08 17:24:20 backup world 70B77992934409F4F933276E747B6ECD
+2026-06-08 17:24:28 backup world 70B77992934409F4F933276E747B6ECD
+2026-06-08 17:24:29 restore world 70B77992934409F4F933276E747B6ECD from world-70B77992934409F4F933276E747B6ECD-20260608-092326.zip
+2026-06-08 17:42:24 node panel started http://0.0.0.0:8210/
+2026-06-08 17:43:47 node panel started http://0.0.0.0:8210/
+2026-06-08 17:49:23 update settings
+2026-06-08 17:49:31 update settings
+2026-06-08 17:49:40 start server
